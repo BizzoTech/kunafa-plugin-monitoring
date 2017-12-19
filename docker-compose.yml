@@ -1,6 +1,8 @@
 version: '2.2'
 
 services:
+  kunafa-metrics:
+    build: ./kunafa-metrics
   main-db-metrics:
     image: gesellix/couchdb-prometheus-exporter
     command: 

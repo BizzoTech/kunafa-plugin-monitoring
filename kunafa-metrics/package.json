@@ -1,0 +1,13 @@
+{
+  "name": "kunafa-metrics",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Emad Shaaban",
+  "license": "MIT",
+  "dependencies": {
+    "experimental-server": "git+https://github.com/BizzoTech/experimental-server#57498229cb9c4e1cf4330bcd20c830526ecca483",
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3",
+    "prom-client": "^10.2.2"
+  }
+}
