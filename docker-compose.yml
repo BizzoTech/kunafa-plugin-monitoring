@@ -1,0 +1,24 @@
+version: '2.2'
+
+services:
+  main-db-metrics:
+    image: gesellix/couchdb-prometheus-exporter
+    command: 
+    - -logtostderr
+    - -couchdb.uri=http://main-db:5984
+    - -couchdb.username=${COUCHDB_USER}
+    - -couchdb.password=${COUCHDB_PASSWORD}
+  public-db-metrics:
+    image: gesellix/couchdb-prometheus-exporter
+    command: 
+    - -logtostderr
+    - -couchdb.uri=http://public-db:5984
+    - -couchdb.username=${COUCHDB_USER}
+    - -couchdb.password=${COUCHDB_PASSWORD}
+  cadvisor:
+    image: google/cadvisor:v0.28.3
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
