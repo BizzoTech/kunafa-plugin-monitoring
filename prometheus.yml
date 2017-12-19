@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: prometheus
+
+    scrape_interval: 5s
+
+    static_configs:
+      # These endpoints are scraped via HTTP.
+      - targets:
+        - 'localhost:9090'
+        - 'main-db-metrics:9984'
+        - 'public-db-metrics:9984'
+        - 'cadvisor:8080'
+        - 'kunafa-metrics:3000'
+        - 'proxy-server:8090'
