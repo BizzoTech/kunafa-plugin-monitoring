@@ -1,0 +1,33 @@
+  server {
+    listen 80;
+
+    server_name dashboard.*;
+
+    location / {
+      resolver 127.0.0.11 valid=30s;
+
+      proxy_pass http://grafana:3000;
+      proxy_redirect off;
+      proxy_set_header Host $host;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+  }
+
+
+  server {
+    listen 8090;
+
+    location /metrics {
+      content_by_lua '
+        metric_connections:set(ngx.var.connections_active, {"active"})
+        metric_connections:set(ngx.var.connections_reading, {"reading"})
+        metric_connections:set(ngx.var.connections_waiting, {"waiting"})
+        metric_connections:set(ngx.var.connections_writing, {"writing"})
+        prometheus:collect()
+      ';
+    }
+
+    location /basic_status {
+      stub_status;
+    }
+  }
