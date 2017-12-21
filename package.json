@@ -1,6 +1,6 @@
 {
   "name": "kunafa-plugin-monitoring",
-  "version": "0.0.2",
+  "version": "v0.0.3",
   "main": "index.js",
   "repository": "git@github.com:BizzoTech/kunafa-plugin-monitoring.git",
   "author": "Emad Shaaban <emad.shaaban92@gmail.com>",
