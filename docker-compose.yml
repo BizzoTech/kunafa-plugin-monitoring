@@ -18,7 +18,7 @@ services:
     - -couchdb.username=${COUCHDB_USER}
     - -couchdb.password=${COUCHDB_PASSWORD}
   cadvisor:
-    image: google/cadvisor:v0.28.3
+    image: google/cadvisor:v0.30.2
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
